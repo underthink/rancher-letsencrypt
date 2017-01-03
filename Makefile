@@ -4,10 +4,10 @@
 
 .PHONY: build deps test release clean push image ci-compile build-dir ci-dist dist-dir ci-release version help
 
-PROJECT := rancher-letsencrypt
+PROJECT := rancher-letsencrypt-pdns
 PLATFORMS := linux
 ARCH := amd64
-DOCKER_IMAGE := janeczku/$(PROJECT)
+DOCKER_IMAGE := wildeep/$(PROJECT)
 
 VERSION := $(shell cat VERSION)
 SHA := $(shell git rev-parse --short HEAD)

@@ -3,7 +3,7 @@ MAINTAINER Jan Broer <jan@festplatte.eu.org>
 
 RUN apk add --no-cache ca-certificates
 
-ADD build/rancher-letsencrypt-linux-amd64 /usr/bin/rancher-letsencrypt
+ADD build/rancher-letsencrypt-pdns-linux-amd64 /usr/bin/rancher-letsencrypt
 
 RUN chmod +x /usr/bin/rancher-letsencrypt
 
