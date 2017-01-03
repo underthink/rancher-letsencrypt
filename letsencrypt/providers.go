@@ -3,6 +3,7 @@ package letsencrypt
 import (
 	"fmt"
 	"os"
+	"net/url"
 
 	lego "github.com/xenolf/lego/acme"
 	"github.com/xenolf/lego/providers/dns/cloudflare"
@@ -12,6 +13,7 @@ import (
 	"github.com/xenolf/lego/providers/dns/ovh"
 	"github.com/xenolf/lego/providers/dns/route53"
 	"github.com/xenolf/lego/providers/dns/vultr"
+	"github.com/xenolf/lego/providers/dns/pdns"
 )
 
 // ProviderOpts is used to configure the DNS provider
@@ -46,6 +48,10 @@ type ProviderOpts struct {
 	OvhApplicationKey    string
 	OvhApplicationSecret string
 	OvhConsumerKey       string
+
+	// pdns api
+	PdnsApiKey	string
+	PdnsApiHost	string
 }
 
 type DnsProvider string
@@ -58,6 +64,7 @@ const (
 	DYN          = DnsProvider("Dyn")
 	VULTR        = DnsProvider("Vultr")
 	OVH          = DnsProvider("Ovh")
+	PDNS		= DnsProvider("Pdns")
 )
 
 var dnsProviderFactory = map[DnsProvider]interface{}{
@@ -68,6 +75,7 @@ var dnsProviderFactory = map[DnsProvider]interface{}{
 	DYN:          makeDynProvider,
 	VULTR:        makeVultrProvider,
 	OVH:          makeOvhProvider,
+	PDNS:		makePdnsProvider,
 }
 
 func getProvider(opts ProviderOpts) (lego.ChallengeProvider, error) {
@@ -193,6 +201,25 @@ func makeOvhProvider(opts ProviderOpts) (lego.ChallengeProvider, error) {
 
 	provider, err := ovh.NewDNSProviderCredentials("ovh-eu", opts.OvhApplicationKey, opts.OvhApplicationSecret,
 		opts.OvhConsumerKey)
+	if err != nil {
+		return nil, err
+	}
+	return provider, nil
+}
+
+// returns a preconfigured Pdns lego.ChallengeProvider
+func makePdnsProvider(opts ProviderOpts) (lego.ChallengeProvider, error) {
+	if len(opts.PdnsApiKey) == 0 {
+		return nil, fmt.Errorf("PDNS API key is not set")
+	}
+	if len(opts.PdnsApiHost) == 0 {
+		return nil, fmt.Errorf("PDNS API host is not set")
+	}
+	url, err := url.Parse(opts.PdnsApiHost)
+	if err != nil {
+		return nil, err
+	}
+	provider, err := pdns.NewDNSProviderCredentials(url, opts.PdnsApiKey)
 	if err != nil {
 		return nil, err
 	}

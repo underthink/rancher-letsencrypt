@@ -1,12 +1,12 @@
 {
-	"ImportPath": "github.com/janeczku/rancher-letsencrypt",
-	"GoVersion": "go1.5",
-	"GodepVersion": "v74",
+	"ImportPath": "github.com/underthink/rancher-letsencrypt",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
 	"Deps": [
 		{
 			"ImportPath": "github.com/JamesClonk/vultr/lib",
-			"Comment": "v1.8",
-			"Rev": "f4daffde4646155fa142e64e114f771aa259c7f5"
+			"Comment": "1.12.0-11-g9ec0427",
+			"Rev": "9ec0427d51411407c0402b093a1771cb75af9679"
 		},
 		{
 			"ImportPath": "github.com/Sirupsen/logrus",
@@ -133,6 +133,16 @@
 			"Rev": "c45a635370221f34fea2d5163fd156fcb4e38e8a"
 		},
 		{
+			"ImportPath": "github.com/janeczku/rancher-letsencrypt/letsencrypt",
+			"Comment": "v0.3.0-5-gfcf5803",
+			"Rev": "fcf5803495534b1cca1a74deec54d7977322649a"
+		},
+		{
+			"ImportPath": "github.com/janeczku/rancher-letsencrypt/rancher",
+			"Comment": "v0.3.0-5-gfcf5803",
+			"Rev": "fcf5803495534b1cca1a74deec54d7977322649a"
+		},
+		{
 			"ImportPath": "github.com/jmespath/go-jmespath",
 			"Comment": "0.2.2-12-g0b12d6b",
 			"Rev": "0b12d6b521d83fc7f755e7cfc1b1fbdd35a01a74"
@@ -160,43 +170,43 @@
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/acme",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/cloudflare",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/digitalocean",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/dnsimple",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/dyn",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/ovh",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/route53",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "github.com/xenolf/lego/providers/dns/vultr",
-			"Comment": "v0.3.1-44-gb12ce5e",
-			"Rev": "b12ce5e73146e74520c426895394b92dffeb3a25"
+			"Comment": "v0.3.1-101-gce8fb06",
+			"Rev": "ce8fb060cb8361a9ff8b5fb7c2347fa907b6fcac"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/ocsp",

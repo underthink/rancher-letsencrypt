@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -17,7 +18,7 @@ import (
 
 const (
 	// Version of this libary
-	Version = "v1.8"
+	Version = "1.12.0"
 
 	// APIVersion of Vultr
 	APIVersion = "v1"
@@ -35,6 +36,7 @@ var retryableStatusCodes = map[int]struct{}{
 	500: {}, // Internal server error. Try again at a later time.
 }
 
+// Client represents the Vultr API client
 type Client struct {
 	// HTTP client for communication with the Vultr API
 	client *http.Client
@@ -55,6 +57,7 @@ type Client struct {
 	bucket *ratelimit.Bucket
 }
 
+// Options represents optional settings and flags that can be passed to NewClient
 type Options struct {
 	// HTTP client for communication with the Vultr API
 	HTTPClient *http.Client
@@ -75,7 +78,11 @@ type Options struct {
 // NewClient creates new Vultr API client. Options are optional and can be nil.
 func NewClient(apiKey string, options *Options) *Client {
 	userAgent := "vultr-go/" + Version
+	transport := &http.Transport{
+		TLSNextProto: make(map[string]func(string, *tls.Conn) http.RoundTripper),
+	}
 	client := http.DefaultClient
+	client.Transport = transport
 	endpoint, _ := url.Parse(DefaultEndpoint)
 	rate := 505 * time.Millisecond
 	attempts := 1
